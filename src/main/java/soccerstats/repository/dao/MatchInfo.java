@@ -1,4 +1,4 @@
-package main.soccerstats.repository.dao;
+package soccerstats.repository.dao;
 
 import javax.persistence.*;
 import java.util.Calendar;

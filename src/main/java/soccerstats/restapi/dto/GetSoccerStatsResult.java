@@ -1,4 +1,4 @@
-package main.soccerstats.restapi.dto;
+package soccerstats.restapi.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -11,7 +11,7 @@ public class GetSoccerStatsResult extends MatchInfo {
     public GetSoccerStatsResult() {
     }
 
-    public GetSoccerStatsResult(main.soccerstats.repository.dao.MatchInfo matchInfo) {
+    public GetSoccerStatsResult(soccerstats.repository.dao.MatchInfo matchInfo) {
         super(matchInfo);
 
         id = matchInfo.getId();

@@ -1,6 +1,6 @@
-package main.soccerstats.repository;
+package soccerstats.repository;
 
-import main.soccerstats.repository.dao.MatchInfo;
+import soccerstats.repository.dao.MatchInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MatchInfoRepository extends JpaRepository<MatchInfo, Integer> {

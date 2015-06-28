@@ -1,10 +1,10 @@
-package main.soccerstats.restapi.controllers;
+package soccerstats.restapi.controllers;
 
-import main.soccerstats.repository.MatchInfoRepository;
-import main.soccerstats.repository.dao.MatchInfo;
-import main.soccerstats.restapi.dto.AddSoccerStatsRequest;
-import main.soccerstats.restapi.dto.AddSoccerStatsResult;
-import main.soccerstats.restapi.dto.GetSoccerStatsResult;
+import soccerstats.repository.MatchInfoRepository;
+import soccerstats.repository.dao.MatchInfo;
+import soccerstats.restapi.dto.AddSoccerStatsRequest;
+import soccerstats.restapi.dto.AddSoccerStatsResult;
+import soccerstats.restapi.dto.GetSoccerStatsResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.web.bind.annotation.*;

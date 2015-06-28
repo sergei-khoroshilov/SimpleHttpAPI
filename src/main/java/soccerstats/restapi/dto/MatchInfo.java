@@ -1,4 +1,4 @@
-package main.soccerstats.restapi.dto;
+package soccerstats.restapi.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -24,7 +24,7 @@ import java.util.Calendar;
     public MatchInfo() {
     }
 
-    public MatchInfo(main.soccerstats.repository.dao.MatchInfo daoMatchInfo) {
+    public MatchInfo(soccerstats.repository.dao.MatchInfo daoMatchInfo) {
         matchDate = daoMatchInfo.getMatchDate();
         homeCommand = daoMatchInfo.getHomeCommand();
         guestCommand = daoMatchInfo.getGuestCommand();

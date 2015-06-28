@@ -1,4 +1,4 @@
-package main.soccerstats.restapi.dto;
+package soccerstats.restapi.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
