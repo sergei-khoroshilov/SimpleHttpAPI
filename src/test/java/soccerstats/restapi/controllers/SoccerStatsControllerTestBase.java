@@ -16,7 +16,6 @@ import soccerstats.restapi.dto.AddSoccerStatsRequest;
 import java.nio.charset.Charset;
 import java.util.GregorianCalendar;
 
-@RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = {Application.class})
 @ContextConfiguration(classes = Application.class)
 @WebAppConfiguration
@@ -57,5 +56,9 @@ public class SoccerStatsControllerTestBase {
         added.setScore("2-2");
 
         return added;
+    }
+
+    public String getMatchUrl(int matchId) {
+        return API_PATH + matchId;
     }
 }

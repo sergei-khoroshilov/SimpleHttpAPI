@@ -3,6 +3,8 @@ package soccerstats.restapi.controllers;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import soccerstats.repository.dao.MatchInfo;
@@ -15,6 +17,7 @@ import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+@RunWith(SpringJUnit4ClassRunner.class)
 public class SoccerStatsControllerTest extends SoccerStatsControllerTestBase {
 
     private MockMvc mockMvc;
@@ -33,13 +36,13 @@ public class SoccerStatsControllerTest extends SoccerStatsControllerTestBase {
 
     @Test
     public void getMatchInfo_NotFound() throws Exception {
-        mockMvc.perform(get(API_PATH + getNotFoundMatchInfoId()))
+        mockMvc.perform(get(getMatchUrl(getNotFoundMatchInfoId())))
                .andExpect(status().isNotFound());
     }
 
     @Test
     public void getMatchInfo_Success() throws Exception {
-        mockMvc.perform(get(API_PATH + matchInfo.getId()))
+        mockMvc.perform(get(getMatchUrl(matchInfo.getId())))
                .andExpect(status().isOk())
                .andExpect(content().contentType(CONTENT_JSON))
                .andExpect(jsonPath("$.*", hasSize(5)))
@@ -52,13 +55,13 @@ public class SoccerStatsControllerTest extends SoccerStatsControllerTestBase {
 
     @Test
     public void deleteMatchInfo_NotFound() throws Exception {
-        mockMvc.perform(delete(API_PATH + getNotFoundMatchInfoId()))
+        mockMvc.perform(delete(getMatchUrl(getNotFoundMatchInfoId())))
                 .andExpect(status().isNotFound());
     }
 
     @Test
     public void deleteMatchInfo_Success() throws Exception {
-        mockMvc.perform(delete(API_PATH + matchInfo.getId()))
+        mockMvc.perform(delete(getMatchUrl(matchInfo.getId())))
                .andExpect(status().isOk());
 
         MatchInfo deleted = matchInfoRepository.findOne(matchInfo.getId());

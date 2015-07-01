@@ -2,9 +2,11 @@ package soccerstats.restapi.controllers;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.web.FilterChainProxy;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import soccerstats.SecurityConfig;
@@ -16,6 +18,7 @@ import java.util.Base64;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = SecurityConfig.class)
 public class SoccerStatsControllerSecurityTest extends SoccerStatsControllerTestBase {
 
@@ -39,19 +42,19 @@ public class SoccerStatsControllerSecurityTest extends SoccerStatsControllerTest
 
     @Test
     public void getMatchInfo_Unauthorized_Success() throws Exception {
-        mockMvcSecured.perform(get(API_PATH + matchInfo.getId()))
+        mockMvcSecured.perform(get(getMatchUrl(matchInfo.getId())))
                       .andExpect(status().isOk());
     }
 
     @Test
     public void deleteMatchInfo_Unauthorized_NotAllowed() throws Exception {
-        mockMvcSecured.perform(delete(API_PATH + matchInfo.getId()))
+        mockMvcSecured.perform(delete(getMatchUrl(matchInfo.getId())))
                       .andExpect(status().isUnauthorized());
     }
 
     @Test
     public void deleteMatchInfo_Authorized_Success() throws Exception {
-        mockMvcSecured.perform(delete(API_PATH + matchInfo.getId())
+        mockMvcSecured.perform(delete(getMatchUrl(matchInfo.getId()))
                                     .header(AUTH_HEADER, getBasicAuthHeader()))
                       .andExpect(status().isOk());
     }
