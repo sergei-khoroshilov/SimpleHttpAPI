@@ -1,7 +1,7 @@
 package soccerstats.webapp.controllers;
 
-import soccerstats.repository.MatchInfoRepository;
-import soccerstats.repository.dao.MatchInfo;
+import soccerstats.dal.matchinfo.MatchInfoRepository;
+import soccerstats.dal.matchinfo.MatchInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

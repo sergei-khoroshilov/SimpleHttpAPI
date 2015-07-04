@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import soccerstats.repository.dao.MatchInfo;
+import soccerstats.dal.matchinfo.MatchInfo;
 import soccerstats.restapi.dto.AddSoccerStatsRequest;
 import soccerstats.restapi.dto.AddSoccerStatsResult;
 import utils.JsonUtils;

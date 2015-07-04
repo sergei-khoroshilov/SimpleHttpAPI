@@ -11,7 +11,7 @@ public class GetSoccerStatsResult extends MatchInfo {
     public GetSoccerStatsResult() {
     }
 
-    public GetSoccerStatsResult(soccerstats.repository.dao.MatchInfo matchInfo) {
+    public GetSoccerStatsResult(soccerstats.dal.matchinfo.MatchInfo matchInfo) {
         super(matchInfo);
 
         id = matchInfo.getId();

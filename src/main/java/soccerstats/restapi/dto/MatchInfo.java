@@ -24,7 +24,7 @@ import java.util.Calendar;
     public MatchInfo() {
     }
 
-    public MatchInfo(soccerstats.repository.dao.MatchInfo daoMatchInfo) {
+    public MatchInfo(soccerstats.dal.matchinfo.MatchInfo daoMatchInfo) {
         matchDate = daoMatchInfo.getMatchDate();
         homeCommand = daoMatchInfo.getHomeCommand();
         guestCommand = daoMatchInfo.getGuestCommand();

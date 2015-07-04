@@ -11,6 +11,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import soccerstats.SecurityConfig;
 import soccerstats.restapi.dto.AddSoccerStatsRequest;
+import test.common.TestAuthHelper;
 import utils.JsonUtils;
 
 import java.util.Base64;
@@ -19,7 +20,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = SecurityConfig.class)
+@ContextConfiguration(classes = {SecurityConfig.class, TestAuthHelper.class})
 public class SoccerStatsControllerSecurityTest extends SoccerStatsControllerTestBase {
 
     private static final String AUTH_HEADER = "Authorization";
@@ -28,6 +29,9 @@ public class SoccerStatsControllerSecurityTest extends SoccerStatsControllerTest
 
     @Autowired
     private FilterChainProxy filterChainProxy;
+
+    @Autowired
+    private TestAuthHelper authHelper;
 
     @Before
     @Override
@@ -71,7 +75,7 @@ public class SoccerStatsControllerSecurityTest extends SoccerStatsControllerTest
     }
 
     @Test
-    public void addMatchInfo__Authorized_Success() throws Exception {
+    public void addMatchInfo_Authorized_Success() throws Exception {
         AddSoccerStatsRequest addedExpected = getAddSoccerStatsRequest();
         byte[] addedContent = JsonUtils.objectToJsonBytes(addedExpected);
 
@@ -82,10 +86,13 @@ public class SoccerStatsControllerSecurityTest extends SoccerStatsControllerTest
                 .andExpect(status().isOk());
     }
 
-    public static String getBasicAuthHeader() {
-        String plainCreds = "user:123";
-        String base64Creds = Base64.getEncoder().encodeToString(plainCreds.getBytes());
+    public String getBasicAuthHeader() {
+        String login = authHelper.getUser().getLogin();
+        String password = authHelper.getUser().getPassword();
 
-        return "Basic " + base64Creds;
+        String plainHeader = login + ":" + password;
+        String base64Header = Base64.getEncoder().encodeToString(plainHeader.getBytes());
+
+        return "Basic " + base64Header;
     }
 }

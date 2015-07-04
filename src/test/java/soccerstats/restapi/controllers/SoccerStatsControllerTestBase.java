@@ -1,16 +1,14 @@
 package soccerstats.restapi.controllers;
 
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.web.context.WebApplicationContext;
 import soccerstats.Application;
-import soccerstats.repository.MatchInfoRepository;
-import soccerstats.repository.dao.MatchInfo;
+import soccerstats.dal.matchinfo.MatchInfoRepository;
+import soccerstats.dal.matchinfo.MatchInfo;
 import soccerstats.restapi.dto.AddSoccerStatsRequest;
 
 import java.nio.charset.Charset;

@@ -1,7 +1,7 @@
 package soccerstats.restapi.controllers;
 
-import soccerstats.repository.MatchInfoRepository;
-import soccerstats.repository.dao.MatchInfo;
+import soccerstats.dal.matchinfo.MatchInfoRepository;
+import soccerstats.dal.matchinfo.MatchInfo;
 import soccerstats.restapi.dto.AddSoccerStatsRequest;
 import soccerstats.restapi.dto.AddSoccerStatsResult;
 import soccerstats.restapi.dto.GetSoccerStatsResult;
